@@ -1,10 +1,10 @@
 pipeline {
   agent {
-    label 'slave-node'
+    label 'webserver'
 //    customWorkspace '/var/www/html/react-app'
   }
   environment {
-    APP_DIR = '/var/www/html/react-app' // Custom application directory
+    APP_DIR = '/var/www/html/node-hello-world' // Custom application directory
   }
   stages {
     stage('Checkout') {
@@ -28,7 +28,7 @@ pipeline {
 }
     stage('Move Files to Project Directory') {
       steps {
-        sh "rsync -avz --exclude '.git' /var/www/html/react-app/workspace/react-app/ ${APP_DIR}/"
+        sh "rsync -avz --exclude '.git' /home/jenkins/workspace/react-app/ ${APP_DIR}/"
 }
 }
     stage('Build') {
@@ -36,7 +36,8 @@ pipeline {
         dir(APP_DIR) {
         //  sh 'npm install'
     //      sh 'npm run build'
-	   sh 'docker compose up -d'	
+	//   sh 'docker compose up -d'	
+           sh 'npm run build'
         }
       }
     }
