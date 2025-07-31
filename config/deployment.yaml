@@ -18,7 +18,7 @@ spec:
         app: node-hello-world
     spec:
       containers:
-      - image: us.icr.io/samples/node-hello-world:v1
+      - image: sazalach/nodejs-pp:30 
         name: node-hello-world
         resources: {}
 status: {}
