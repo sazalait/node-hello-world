@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
   </head>
   <body>
     <div class="container">
-      <p class="centered-text">Gitlab CI/CD Configuration</p>
+      <p class="centered-text">Gitlab Test CI/CD Configuration</p>
       <p class="centered-text">This is Test for changes.</p>
     </div>
   </body>
