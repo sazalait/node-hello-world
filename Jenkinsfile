@@ -37,7 +37,7 @@ pipeline {
         //  sh 'npm install'
     //      sh 'npm run build'
 	//   sh 'docker compose up -d'	
-           sh 'pm2 restart my-app'
+           sh "pm2 restart my-app --cwd ${APP_DIR}"
         }
       }
     }
