@@ -43,14 +43,6 @@ pipeline {
         }
       }
     }
-//   stage('Restart Application') {
-//	  steps {
-//        // Replace 'your-app-name' with the actual name of your Node.js application managed by pm2
-//        script {
-//          sh "pm2 restart reac-app --cwd ${APP_DIR}"
-//        }
-//      }
-//    }
   }
 }
 
