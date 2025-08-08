@@ -38,7 +38,8 @@ pipeline {
     //      sh 'npm run build'
 	//   sh 'docker compose up -d'	
         //   sh 'pm2 restart my-app'
-             sh 'sudo docker build -t my-react-app .'
+             sh 'whoami'
+             sh 'docker build -t my-react-app .'
              sh 'docker run -d -p 8081:8080 --name my-react-container my-react-app'
         }
       }
