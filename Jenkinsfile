@@ -5,6 +5,8 @@ pipeline {
   }
   environment {
     APP_DIR = '/var/www/html/node-hello-world' // Custom application directory
+    IMAGE_NAME = "my-react-app"
+    IMAGE_VERSION = "${env.BUILD_NUMBER}" // Jenkins build number as version
   }
   stages {
     stage('Checkout') {
@@ -38,9 +40,13 @@ pipeline {
     //      sh 'npm run build'
 	//   sh 'docker compose up -d'	
         //   sh 'pm2 restart my-app'
-             sh 'whoami'
-             sh 'docker build -t my-react-app .'
-             sh 'docker run -d -p 8081:8080 --name my-react-container my-react-app'
+//             sh 'whoami'
+//             sh 'docker build -t my-react-app .'
+
+               def tag = "${IMAGE_NAME}:${IMAGE_VERSION}"
+                sh 'echo "Building image: ${tag}"'
+                sh 'docker build -t ${tag} . '
+                sh 'docker run -d -p 8081:8080 --name my-react-container ${tag}'
         }
       }
     }
