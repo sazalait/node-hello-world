@@ -4,7 +4,7 @@ pipeline {
 //    customWorkspace '/var/www/html/react-app'
   }
   environment {
-    APP_DIR = '/var/www/html/node-hello-world' // Custom application directory
+    APP_DIR = '/var/www/html/multi-react-app_fix-123' // Custom application directory
     IMAGE_NAME = "my-react-app"
     IMAGE_VERSION = "${env.BUILD_NUMBER}" // Jenkins build number as version
   }
@@ -30,7 +30,7 @@ pipeline {
 }
     stage('Move Files to Project Directory') {
       steps {
-        sh "rsync -avz --exclude '.git' /home/jenkins/workspace/react-app/ ${APP_DIR}/"
+        sh "rsync -avz --exclude '.git' /home/jenkins/workspace/multi-react-app_fix-123/ ${APP_DIR}/"
 }
 }
    stage('Build') {
