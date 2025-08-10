@@ -20,13 +20,10 @@ pipeline {
 	script {
             // Only run npm install if there are changes
             sh 'npm install'
-            else {
-            echo 'No changes in package.json or package-lock.json. Skipping npm install.'
-		sh 'npm test'
+	    sh 'npm test'
           }
       }
     }
-}
     stage('Move Files to Project Directory') {
       steps {
         sh "rsync -avz --exclude '.git' /home/jenkins/workspace/multi-react-app_fix-123/ ${APP_DIR}/"
