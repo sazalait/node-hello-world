@@ -18,10 +18,9 @@ pipeline {
   stage('Run Tests') {
       steps {
 	script {
-	 if (fileExists('package.json') || fileExists('package-lock.json')) {
             // Only run npm install if there are changes
             sh 'npm install'
-          } else {
+            else {
             echo 'No changes in package.json or package-lock.json. Skipping npm install.'
 		sh 'npm test'
           }
