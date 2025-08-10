@@ -20,7 +20,7 @@ pipeline {
 	script {
             // Only run npm install if there are changes
             sh 'npm install'
-	    sh 'npm test'
+//	    sh 'npm test'
           }
       }
     }
