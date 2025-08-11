@@ -1,7 +1,6 @@
 pipeline {
   agent {
     label 'webserver'
-//    customWorkspace '/var/www/html/react-app'
   }
   environment {
     APP_DIR = '/var/www/html/node-hello-world' // Custom application directory
@@ -9,7 +8,6 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
- //       git url: 'https://github.com/your-username/your-nodejs-app.git', branch: 'main', credentialsId: 'correct-git-credentials-id'
 	checkout scm
       }
     }
@@ -34,16 +32,12 @@ pipeline {
     stage('Build') {
       steps {
         dir(APP_DIR) {
-        //  sh 'npm install'
-    //      sh 'npm run build'
-	//   sh 'docker compose up -d'	
            sh "pm2 restart my-app --cwd ${APP_DIR}"
         }
       }
     }
 //   stage('Restart Application') {
 //	  steps {
-//        // Replace 'your-app-name' with the actual name of your Node.js application managed by pm2
 //        script {
 //          sh "pm2 restart reac-app --cwd ${APP_DIR}"
 //        }
