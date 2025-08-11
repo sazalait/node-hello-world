@@ -43,11 +43,27 @@ pipeline {
                 def tag = "${IMAGE_NAME}:${IMAGE_VERSION}"
                 sh "echo 'Building image: ${tag}'"
                 sh "docker build -t ${tag} ."
-                sh "docker run -d -p 8081:8080 --name my-react-container ${tag}"
             }
         }
     }
 }
+
+    stage('Approval') {
+      steps {
+        input message: 'Approve deployment to PRODUCTION?', ok: 'Deploy'
+      }
+    }
+    stage('Deploy to Production') {
+      steps {
+         dir(APP_DIR) {
+            script {
+                def tag = "${IMAGE_NAME}:${IMAGE_VERSION}"
+                sh "docker run -d -p 8081:8080 --name my-react-container ${tag}"
+            }
+        }
+ 
+      }
+    }
   }
 }
 
